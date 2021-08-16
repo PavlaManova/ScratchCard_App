@@ -68,15 +68,5 @@ public class ImageAdapter extends BaseAdapter {
         textView.setText(moviesNames[i]);
 
         return view;
-        /*ShapeableImageView imageView2=new ShapeableImageView(context);
-        imageView2.setImageResource(images[i]);
-        imageView2.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView2.setLayoutParams(new GridView.LayoutParams(250,250));*/
-        
-        /*ImageView imageView=new ImageView(context);
-        imageView.setImageResource(images[i]);
-        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setLayoutParams(new GridView.LayoutParams(250,250));
-        return imageView;*/
     }
 }
