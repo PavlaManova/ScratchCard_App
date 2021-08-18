@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/femaleImage"
+        android:layout_width="135dp"
+        android:layout_height="135dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/Circular"
+        app:srcCompat="@drawable/owner_image_female"/>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/maleImage"
+        android:layout_width="135dp"
+        android:layout_height="135dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/Circular"
+        app:srcCompat="@drawable/owner_image_male"
+        android:layout_alignParentRight="true"/>
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+             <RadioButton
+                 android:id="@+id/femaleRadioButton"
+                 android:layout_width="150dp"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="156dp"
+                 android:textSize="20sp"
+                 android:text="female" />
+
+             <RadioButton
+                 android:id="@+id/maleRadioButton"
+                 android:layout_width="150dp"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="156dp"
+                  android:textSize="20sp"
+                  android:layout_alignParentRight="true"
+                  android:text="male" />
+
+        </RadioGroup>
+
+</RelativeLayout>
