@@ -22,7 +22,7 @@ public class ImageAdapter extends BaseAdapter {
             R.drawable.the_kite_runner,
             R.drawable.titanic,
             R.drawable.troy,
-            R.drawable.troy,
+            R.drawable.slumdog_millionaire,
             R.drawable.troy,
             R.drawable.troy,
             R.drawable.troy,
