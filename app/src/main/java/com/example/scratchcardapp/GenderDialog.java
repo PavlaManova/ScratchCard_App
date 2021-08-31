@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 
@@ -28,8 +29,8 @@ public class GenderDialog extends AppCompatDialogFragment {
 
         LayoutInflater inflater=getActivity().getLayoutInflater();
         View view=inflater.inflate(R.layout.gender_dialog,null);
-        femaleRadioButton=view.findViewById(R.id.femaleRadioButton);
-        maleRadioButton=view.findViewById(R.id.maleRadioButton);
+        femaleRadioButton=(RadioButton)view.findViewById(R.id.femaleRadioButton);
+        maleRadioButton=(RadioButton)view.findViewById(R.id.maleRadioButton);
 
         builder.setView(view)
                 .setTitle("Choose profile picture")
