@@ -30,23 +30,28 @@
         app:shapeAppearanceOverlay="@style/Circular"
         app:srcCompat="@drawable/owner_image_male" />
 
-    <RadioButton
-        android:id="@+id/femaleRadioButton"
-        android:layout_width="100dp"
+    <RadioGroup
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:text="female"
-        app:layout_constraintEnd_toStartOf="@+id/maleRadioButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/femaleImage" />
+        app:layout_constraintStart_toStartOf="@id/femaleImage"
+        app:layout_constraintTop_toBottomOf="@id/femaleImage">
 
-    <RadioButton
-        android:id="@+id/maleRadioButton"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="male"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/femaleRadioButton"
-        app:layout_constraintTop_toBottomOf="@+id/maleImage" />
+        <RadioButton
+            android:id="@+id/femaleRadioButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="female" />
+
+        <RadioButton
+            android:id="@+id/maleRadioButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_alignParentRight="true"
+            android:text="male" />
+
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

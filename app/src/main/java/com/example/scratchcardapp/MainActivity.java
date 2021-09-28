@@ -12,6 +12,7 @@ import android.widget.RadioButton;
 public class MainActivity extends AppCompatActivity implements GenderDialog.GenderDialogListener {
 
     private ImageView ownerImage;
+    private boolean femaleChosen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,13 @@ public class MainActivity extends AppCompatActivity implements GenderDialog.Gend
         setContentView(R.layout.activity_main);
 
         ownerImage=(ImageView)findViewById(R.id.ownerImage);
+
+        femaleChosen=PrefConfig.loadGenderImgFromPref(this);
+        if(femaleChosen)
+            ownerImage.setImageResource(R.drawable.owner_image_female);
+        else
+            ownerImage.setImageResource(R.drawable.owner_image_male);
+        
         ownerImage.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -43,9 +51,14 @@ public class MainActivity extends AppCompatActivity implements GenderDialog.Gend
         if(femaleRadioButton.isChecked())
         {
             ownerImage.setImageResource(R.drawable.owner_image_female);
+            femaleChosen=true;
+            PrefConfig.saveGenderInPref(getApplicationContext(),femaleChosen);
         }
-        else
+        else {
             ownerImage.setImageResource(R.drawable.owner_image_male);
+            femaleChosen=false;
+            PrefConfig.saveGenderInPref(getApplicationContext(),femaleChosen);
+        }
     }
 }
 
