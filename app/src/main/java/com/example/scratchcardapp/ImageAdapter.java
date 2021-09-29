@@ -16,7 +16,9 @@ public class ImageAdapter extends BaseAdapter {
     private Context context;
     private LayoutInflater inflater;
 
-    private Integer[] images={
+    private Boolean[] imgScratched= new Boolean[100];
+
+    public Integer[] images={
             //1
             R.drawable.lion,
             R.drawable.the_godfather,
@@ -129,7 +131,7 @@ public class ImageAdapter extends BaseAdapter {
             R.drawable.troy
     };
 
-    private String[] moviesNames= {
+    public String[] moviesNames= {
             //1
             "Lion",
             "The Godfather",
@@ -274,8 +276,9 @@ public class ImageAdapter extends BaseAdapter {
 
         ImageView imageView=view.findViewById(R.id.image_view);
         TextView textView=view.findViewById(R.id.text_view);
-        imageView.setImageResource(images[i]);
         textView.setText(moviesNames[i]);
+
+        imageView.setImageResource(R.drawable.default_min);
 
         return view;
     }

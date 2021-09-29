@@ -3,8 +3,10 @@ package com.example.scratchcardapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -26,18 +28,27 @@ public class MainActivity extends AppCompatActivity implements GenderDialog.Gend
             ownerImage.setImageResource(R.drawable.owner_image_female);
         else
             ownerImage.setImageResource(R.drawable.owner_image_male);
-        
+
         ownerImage.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
                 openDialog();
-
                 return true;
             }
         });
 
         GridView gridView=(GridView) findViewById(R.id.gridView);
-        gridView.setAdapter(new ImageAdapter(this));
+        ImageAdapter imgAdapter=new ImageAdapter(this);
+        gridView.setAdapter(imgAdapter);
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectedName=imgAdapter.moviesNames[position];
+                int selectedImage=imgAdapter.images[position];
+                startActivity(new Intent(MainActivity.this, ClickedItemActivity.class).putExtra("name",selectedName).putExtra("image",selectedImage));
+            }
+        });
     }
 
     public void openDialog()
@@ -52,13 +63,12 @@ public class MainActivity extends AppCompatActivity implements GenderDialog.Gend
         {
             ownerImage.setImageResource(R.drawable.owner_image_female);
             femaleChosen=true;
-            PrefConfig.saveGenderInPref(getApplicationContext(),femaleChosen);
         }
         else {
             ownerImage.setImageResource(R.drawable.owner_image_male);
             femaleChosen=false;
-            PrefConfig.saveGenderInPref(getApplicationContext(),femaleChosen);
         }
+        PrefConfig.saveGenderInPref(getApplicationContext(),femaleChosen);
     }
 }
 
