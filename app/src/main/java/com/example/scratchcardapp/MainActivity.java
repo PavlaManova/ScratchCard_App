@@ -18,19 +18,18 @@ public class MainActivity extends AppCompatActivity implements GenderDialog.Gend
     private ImageView ownerImage;
     private boolean femaleChosen;
 
+    private String selectedName;
+    private int selectedImage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         ownerImage=(ImageView)findViewById(R.id.ownerImage);
+        loadOwnerImage();
 
-        femaleChosen=PrefConfig.loadGenderImgFromPref(this);
-        if(femaleChosen)
-            ownerImage.setImageResource(R.drawable.owner_image_female);
-        else
-            ownerImage.setImageResource(R.drawable.owner_image_male);
-
+        //change gender option
         ownerImage.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -39,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements GenderDialog.Gend
             }
         });
 
+        //fill grid with 100 items
         GridView gridView=(GridView) findViewById(R.id.gridView);
         ImageAdapter imgAdapter=new ImageAdapter(this);
         gridView.setAdapter(imgAdapter);
@@ -46,13 +46,21 @@ public class MainActivity extends AppCompatActivity implements GenderDialog.Gend
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String selectedName=imgAdapter.moviesNames[position];
-                int selectedImage=imgAdapter.images[position];
+                selectedName=imgAdapter.getItemName(position);
+                selectedImage=imgAdapter.getItemImage(position);
                 startActivity(new Intent(MainActivity.this, ClickedItemActivity.class)
                         .putExtra("name",selectedName).putExtra("image",selectedImage)
                         .putExtra("position",position));
             }
         });
+    }
+
+    private void loadOwnerImage() {
+        femaleChosen=PrefConfig.loadGenderImgFromPref(this);
+        if(femaleChosen)
+            ownerImage.setImageResource(R.drawable.owner_image_female);
+        else
+            ownerImage.setImageResource(R.drawable.owner_image_male);
     }
 
     public void openDialog()

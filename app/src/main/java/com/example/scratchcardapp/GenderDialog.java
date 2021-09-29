@@ -29,6 +29,7 @@ public class GenderDialog extends AppCompatDialogFragment {
 
         LayoutInflater inflater=getActivity().getLayoutInflater();
         View view=inflater.inflate(R.layout.gender_dialog,null);
+
         femaleRadioButton=(RadioButton)view.findViewById(R.id.femaleRadioButton);
         maleRadioButton=(RadioButton)view.findViewById(R.id.maleRadioButton);
 

@@ -18,7 +18,7 @@ public class ImageAdapter extends BaseAdapter {
 
     private Boolean[] imgScratched= new Boolean[100];
 
-    public Integer[] images={
+    private Integer[] images={
             //1
             R.drawable.lion,
             R.drawable.the_godfather,
@@ -131,7 +131,7 @@ public class ImageAdapter extends BaseAdapter {
             R.drawable.troy
     };
 
-    public String[] moviesNames= {
+    private String[] moviesNames= {
             //1
             "Lion",
             "The Godfather",
@@ -261,6 +261,14 @@ public class ImageAdapter extends BaseAdapter {
     @Override
     public long getItemId(int i) {
         return 0;
+    }
+
+    public int getItemImage(int i){
+        return images[i];
+    }
+
+    public String getItemName(int i){
+        return moviesNames[i];
     }
 
     @Override
