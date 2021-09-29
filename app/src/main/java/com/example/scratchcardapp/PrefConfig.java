@@ -7,7 +7,16 @@ public class PrefConfig {
     private static final String MY_PREFERENCE_NAME = "com.example.scratchcardapp";
     private static final String PREF_GENDER_KEY = "pref_gender_key";
     private static final String[] PREF_IMG_SCR_KEY= {
-    "1","2","3","4"
+    "1","2","3","4","5","6","7","8","9","10",
+            "1","2","3","4","5","6","7","8","9","10",
+            "1","2","3","4","5","6","7","8","9","10",
+            "1","2","3","4","5","6","7","8","9","10",
+            "1","2","3","4","5","6","7","8","9","10",
+            "1","2","3","4","5","6","7","8","9","10",
+            "1","2","3","4","5","6","7","8","9","10",
+            "1","2","3","4","5","6","7","8","9","10",
+            "1","2","3","4","5","6","7","8","9","10",
+            "1","2","3","4","5","6","7","8","9","10"
     };
 
     public static void saveGenderInPref(Context context, boolean femaleChosen)
@@ -23,13 +32,10 @@ public class PrefConfig {
         return pref.getBoolean(PREF_GENDER_KEY, true);
     }
 
-    public static void saveScratchedImgInPref(Context context, boolean[] imgScratched){
+    public static void saveScratchedImgInPref(Context context, boolean imgScratched, int position){
         SharedPreferences pref=context.getSharedPreferences(MY_PREFERENCE_NAME,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor=pref.edit();
-        for(int i=0;i<PREF_IMG_SCR_KEY.length;i++)
-        {
-            editor.putBoolean(PREF_IMG_SCR_KEY[i],imgScratched[i]);
-        }
+        editor.putBoolean(PREF_IMG_SCR_KEY[position],imgScratched);
         editor.apply();
     }
 

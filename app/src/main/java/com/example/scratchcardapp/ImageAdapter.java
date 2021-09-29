@@ -278,7 +278,12 @@ public class ImageAdapter extends BaseAdapter {
         TextView textView=view.findViewById(R.id.text_view);
         textView.setText(moviesNames[i]);
 
-        imageView.setImageResource(R.drawable.default_min);
+        //imageView.setImageResource(R.drawable.default_min);
+        boolean isScratched=PrefConfig.loadScratchedImgFromPref(context,i);
+        if(isScratched)
+            imageView.setImageResource(images[i]);
+        else
+            imageView.setImageResource(R.drawable.default_min);
 
         return view;
     }

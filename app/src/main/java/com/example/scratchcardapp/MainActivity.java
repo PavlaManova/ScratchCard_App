@@ -7,9 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements GenderDialog.GenderDialogListener {
 
@@ -46,7 +48,9 @@ public class MainActivity extends AppCompatActivity implements GenderDialog.Gend
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selectedName=imgAdapter.moviesNames[position];
                 int selectedImage=imgAdapter.images[position];
-                startActivity(new Intent(MainActivity.this, ClickedItemActivity.class).putExtra("name",selectedName).putExtra("image",selectedImage));
+                startActivity(new Intent(MainActivity.this, ClickedItemActivity.class)
+                        .putExtra("name",selectedName).putExtra("image",selectedImage)
+                        .putExtra("position",position));
             }
         });
     }
