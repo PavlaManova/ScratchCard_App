@@ -26,7 +26,7 @@ public class ClickedItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clicked_item);
 
-        movieToScrImg=(ImageView)findViewById(R.id.movieToScratchView);
+        movieToScrImg=(ImageView)findViewById(R.id.imgToScratch);
         movieName=(TextView)findViewById(R.id.movieNameView);
 
         btn=(Button)findViewById(R.id.tryBtn);
