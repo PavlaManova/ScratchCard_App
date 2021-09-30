@@ -9,39 +9,30 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="210dp"
-        android:layout_height="210dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-    
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="20dp"
-        tools:ignore="UseCompoundDrawables">
 
         <ImageView
             android:id="@+id/imgToScratch"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/slumdog_millionaire"/>
-
-    </LinearLayout>
+            android:scaleType="centerCrop"
+            />
 
     <com.anupkumarpanwar.scratchview.ScratchView
         android:id="@+id/scratchView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:overlay_image="@drawable/default_min"
-        app:overlay_height="210dp"
-        app:overlay_width="210dp"/>
+        app:overlay_height="250dp"
+        app:overlay_width="250dp"/>
 
     </androidx.cardview.widget.CardView>
 

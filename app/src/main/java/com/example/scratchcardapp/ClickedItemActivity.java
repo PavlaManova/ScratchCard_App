@@ -34,7 +34,8 @@ public class ClickedItemActivity extends AppCompatActivity {
         intent=getIntent();
         getItemExtras();
 
-        loadDataAccordingScratched();
+        movieToScrImg.setImageResource(selectedImage);
+        //loadDataAccordingScratched();
 
         //temporary code
         btn.setOnClickListener(new View.OnClickListener() {
