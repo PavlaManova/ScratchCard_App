@@ -3,7 +3,10 @@
     <style name="Circular">
         <item name="cornerSize">50%</item>
     </style>
-    <style name="RoundSquare">
+    <style name="RoundedSquare">
         <item name="cornerSize">20%</item>
+    </style>
+    <style name="SlightlyRoundedSquare">
+        <item name="cornerSize">10%</item>
     </style>
 </resources>

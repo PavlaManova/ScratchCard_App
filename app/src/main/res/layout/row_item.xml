@@ -15,7 +15,7 @@
         android:layout_marginLeft="3dp"
         android:scaleType="centerCrop"
         android:layout_gravity="center"
-        app:shapeAppearanceOverlay="@style/RoundSquare"/>
+        app:shapeAppearanceOverlay="@style/RoundedSquare"/>
 
 
     <TextView
