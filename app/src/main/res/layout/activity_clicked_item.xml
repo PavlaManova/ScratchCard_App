@@ -26,13 +26,13 @@
             android:scaleType="centerCrop"
             />
 
-    <com.anupkumarpanwar.scratchview.ScratchView
-        android:id="@+id/scratchView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:overlay_image="@drawable/default_min"
-        app:overlay_height="250dp"
-        app:overlay_width="250dp"/>
+        <com.anupkumarpanwar.scratchview.ScratchView
+            android:id="@+id/scratchView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:overlay_image="@drawable/default_min"
+            app:overlay_height="250dp"
+            app:overlay_width="250dp"/>
 
     </androidx.cardview.widget.CardView>
 
@@ -41,19 +41,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-    <Button
-        android:id="@+id/tryBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/scratchedImg"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        app:elevation="8dp"
+        android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/RoundSquare"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/movieNameView" />
-    
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

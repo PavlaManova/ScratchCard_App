@@ -16,8 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/Circular"
-        app:srcCompat="@drawable/owner_image_female" />
+        app:shapeAppearanceOverlay="@style/Circular" />
 
     <GridView
         android:id="@+id/gridView"
