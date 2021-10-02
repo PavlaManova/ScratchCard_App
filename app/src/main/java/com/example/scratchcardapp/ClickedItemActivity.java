@@ -34,36 +34,29 @@ public class ClickedItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clicked_item);
 
-        movieToScrImg=(ImageView)findViewById(R.id.imgToScratch);
-        movieName=(TextView)findViewById(R.id.movieNameView);
-        scratchView=findViewById(R.id.scratchView);
-        cardView=findViewById(R.id.cardView);
-        scratchedImg=(ImageView)findViewById(R.id.scratchedImg);
-
-
+        loadViewsById();
         intent=getIntent();
         getItemExtras();
-
-
         loadDataAccordingScratched();
+        configureScratchFeature();
+    }
 
+    private void loadViewsById() {
+        movieToScrImg=(ImageView)findViewById(R.id.imgToScratch);
+        movieName=(TextView)findViewById(R.id.movieNameView);
+        scratchView=(ScratchView) findViewById(R.id.scratchView);
+        cardView=(CardView)findViewById(R.id.cardView);
+        scratchedImg=(ImageView)findViewById(R.id.scratchedImg);
+    }
 
-        scratchView.setStrokeWidth(15);
+    private void getItemExtras() {
+        if(intent.getExtras()!=null){
+            selectedName=intent.getStringExtra("name");
+            selectedImage=intent.getIntExtra("image",0);
+            position=intent.getIntExtra("position",0);
+        }
 
-        scratchView.setRevealListener(new ScratchView.IRevealListener() {
-            @Override
-            public void onRevealed(ScratchView scratchView) {
-                Toast.makeText(getApplicationContext(),"Hope you liked it!",Toast.LENGTH_SHORT).show();
-                isScratched=true;
-                PrefConfig.saveScratchedImgInPref(getApplicationContext(),isScratched,position);
-            }
-
-            @Override
-            public void onRevealPercentChangedListener(ScratchView scratchView, float percent) {
-
-            }
-        });
-
+        movieName.setText(selectedName);
     }
 
     private void loadDataAccordingScratched() {
@@ -81,13 +74,21 @@ public class ClickedItemActivity extends AppCompatActivity {
         }
     }
 
-    private void getItemExtras() {
-        if(intent.getExtras()!=null){
-            selectedName=intent.getStringExtra("name");
-            selectedImage=intent.getIntExtra("image",0);
-            position=intent.getIntExtra("position",0);
-        }
+    private void configureScratchFeature() {
+        scratchView.setStrokeWidth(15);
 
-        movieName.setText(selectedName);
+        scratchView.setRevealListener(new ScratchView.IRevealListener() {
+            @Override
+            public void onRevealed(ScratchView scratchView) {
+                Toast.makeText(getApplicationContext(),"Hope you liked it!",Toast.LENGTH_SHORT).show();
+                isScratched=true;
+                PrefConfig.saveScratchedImgInPref(getApplicationContext(),isScratched,position);
+            }
+
+            @Override
+            public void onRevealPercentChangedListener(ScratchView scratchView, float percent) {
+
+            }
+        });
     }
 }
