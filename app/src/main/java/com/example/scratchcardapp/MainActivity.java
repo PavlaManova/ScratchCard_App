@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements GenderDialog.Gend
         ownerImage.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                openDialog();
+                openGenderDialog();
                 return true;
             }
         });
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements GenderDialog.Gend
             ownerImage.setImageResource(R.drawable.owner_image_male);
     }
 
-    public void openDialog()
+    public void openGenderDialog()
     {
         GenderDialog genderDialog=new GenderDialog();
         genderDialog.show(getSupportFragmentManager(),"we'll see again");
