@@ -48,9 +48,12 @@ public class MainActivity extends AppCompatActivity implements GenderDialog.Gend
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectedName=imgAdapter.getItemName(position);
                 selectedImage=imgAdapter.getItemImage(position);
-                startActivity(new Intent(MainActivity.this, ClickedItemActivity.class)
+               /* startActivity(new Intent(MainActivity.this, ClickedItemActivity.class)
                         .putExtra("name",selectedName).putExtra("image",selectedImage)
-                        .putExtra("position",position));
+                        .putExtra("position",position));*/
+               openSingleItemDialog(new Intent(new Intent(MainActivity.this, SingleItemDialog.class)
+                       .putExtra("name",selectedName).putExtra("image",selectedImage)
+                       .putExtra("position",position)));
             }
         });
     }
@@ -66,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements GenderDialog.Gend
     public void openGenderDialog()
     {
         GenderDialog genderDialog=new GenderDialog();
-        genderDialog.show(getSupportFragmentManager(),"we'll see again");
+        genderDialog.show(getSupportFragmentManager(),"show gender dialog");
     }
 
     @Override
@@ -81,6 +84,12 @@ public class MainActivity extends AppCompatActivity implements GenderDialog.Gend
             femaleChosen=false;
         }
         PrefConfig.saveGenderInPref(getApplicationContext(),femaleChosen);
+    }
+
+    public void openSingleItemDialog(Intent intent){
+        SingleItemDialog singleItemDialog = new SingleItemDialog();
+        singleItemDialog.setIntent(intent);
+        singleItemDialog.show(getSupportFragmentManager(), "show single item clicked dialog");
     }
 }
 
