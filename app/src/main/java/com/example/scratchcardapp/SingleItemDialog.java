@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ public class SingleItemDialog extends AppCompatDialogFragment {
     private ImageView movieToScrImg;
     private ImageView scratchedImg;
     private TextView movieName;
+    private TextView directorName;
     private ScratchView scratchView;
     private String selectedName;
     private int selectedImage;
@@ -31,6 +33,120 @@ public class SingleItemDialog extends AppCompatDialogFragment {
     private Intent intent;
     private Boolean isScratched;
     private CardView cardView;
+
+    private String[] directorsNames=
+    {
+        //1
+        "Garth Davis",
+        "Francis Ford Coppola",
+        "Marc Forster",
+        "James Cameron",
+        "Wolfgang Petersen",
+        "Danny Boyle",
+        "Gore Verbinski",
+            "Wolfgang Petersen",
+            "Wolfgang Petersen",
+            "Wolfgang Petersen",
+            //11
+            "Garth Davis",
+            "Francis Ford Coppola",
+            "Marc Forster",
+            "James Cameron",
+            "Wolfgang Petersen",
+            "Danny Boyle",
+            "Gore Verbinski",
+            "Wolfgang Petersen",
+            "Wolfgang Petersen",
+            "Wolfgang Petersen",
+            //21
+            "Garth Davis",
+            "Francis Ford Coppola",
+            "Marc Forster",
+            "James Cameron",
+            "Wolfgang Petersen",
+            "Danny Boyle",
+            "Gore Verbinski",
+            "Wolfgang Petersen",
+            "Wolfgang Petersen",
+            "Wolfgang Petersen",
+            //31
+            "Garth Davis",
+            "Francis Ford Coppola",
+            "Marc Forster",
+            "James Cameron",
+            "Wolfgang Petersen",
+            "Danny Boyle",
+            "Gore Verbinski",
+            "Wolfgang Petersen",
+            "Wolfgang Petersen",
+            "Wolfgang Petersen",
+            //41
+            "Garth Davis",
+            "Francis Ford Coppola",
+            "Marc Forster",
+            "James Cameron",
+            "Wolfgang Petersen",
+            "Danny Boyle",
+            "Gore Verbinski",
+            "Wolfgang Petersen",
+            "Wolfgang Petersen",
+            "Wolfgang Petersen",
+            //51
+            "Garth Davis",
+            "Francis Ford Coppola",
+            "Marc Forster",
+            "James Cameron",
+            "Wolfgang Petersen",
+            "Danny Boyle",
+            "Gore Verbinski",
+            "Wolfgang Petersen",
+            "Wolfgang Petersen",
+            "Wolfgang Petersen",
+            //61
+            "Garth Davis",
+            "Francis Ford Coppola",
+            "Marc Forster",
+            "James Cameron",
+            "Wolfgang Petersen",
+            "Danny Boyle",
+            "Gore Verbinski",
+            "Wolfgang Petersen",
+            "Wolfgang Petersen",
+            "Wolfgang Petersen",
+            //71
+            "Garth Davis",
+            "Francis Ford Coppola",
+            "Marc Forster",
+            "James Cameron",
+            "Wolfgang Petersen",
+            "Danny Boyle",
+            "Gore Verbinski",
+            "Wolfgang Petersen",
+            "Wolfgang Petersen",
+            "Wolfgang Petersen",
+            //81
+            "Garth Davis",
+            "Francis Ford Coppola",
+            "Marc Forster",
+            "James Cameron",
+            "Wolfgang Petersen",
+            "Danny Boyle",
+            "Gore Verbinski",
+            "Wolfgang Petersen",
+            "Wolfgang Petersen",
+            "Wolfgang Petersen",
+            //91
+            "Garth Davis",
+            "Francis Ford Coppola",
+            "Marc Forster",
+            "James Cameron",
+            "Wolfgang Petersen",
+            "Danny Boyle",
+            "Gore Verbinski",
+            "Wolfgang Petersen",
+            "Wolfgang Petersen",
+            "Wolfgang Petersen",
+    };
 
     @NonNull
     @Override
@@ -41,7 +157,6 @@ public class SingleItemDialog extends AppCompatDialogFragment {
         View view=inflater.inflate(R.layout.single_item_dialog, null);
 
         loadViewsById(view);
-
         getItemExtras();
         loadDataAccordingScratched();
         configureScratchFeature();
@@ -50,7 +165,6 @@ public class SingleItemDialog extends AppCompatDialogFragment {
                 .setPositiveButton("Done", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
                     }
                 });
 
@@ -63,6 +177,7 @@ public class SingleItemDialog extends AppCompatDialogFragment {
         scratchView=(ScratchView) view.findViewById(R.id.scratchView);
         cardView=(CardView)view.findViewById(R.id.cardView);
         scratchedImg=(ImageView)view.findViewById(R.id.scratchedImg);
+        directorName=(TextView)view.findViewById(R.id.directorNameTextView);
     }
 
     private void getItemExtras() {
@@ -77,16 +192,21 @@ public class SingleItemDialog extends AppCompatDialogFragment {
 
     private void loadDataAccordingScratched() {
         movieToScrImg.setImageResource(selectedImage);
+        directorName.setText(directorsNames[position]);
         isScratched=PrefConfig.loadScratchedImgFromPref(getContext(),position);
         scratchedImg.setImageResource(selectedImage);
 
         if(isScratched){
             cardView.setVisibility(View.INVISIBLE);
             scratchedImg.setVisibility(View.VISIBLE);
+            movieName.setTextColor(getResources().getColor(R.color.titleColor));
+            directorName.setTextColor(getResources().getColor(R.color.titleColor));
         }
         else{
             cardView.setVisibility(View.VISIBLE);
             scratchedImg.setVisibility(View.INVISIBLE);
+            movieName.setTextColor(getResources().getColor(R.color.greyTitle));
+            directorName.setTextColor(getResources().getColor(R.color.greyTitle));
         }
     }
 

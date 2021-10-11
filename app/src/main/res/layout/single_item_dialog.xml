@@ -9,8 +9,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,19 +20,18 @@
 
         <ImageView
             android:id="@+id/imgToScratch"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
             android:contentDescription="@string/app_name"
-            android:scaleType="centerCrop"
-            />
+            android:scaleType="centerCrop" />
 
         <com.anupkumarpanwar.scratchview.ScratchView
             android:id="@+id/scratchView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:overlay_height="220dp"
             app:overlay_image="@drawable/default_min"
-            app:overlay_height="250dp"
-            app:overlay_width="250dp"/>
+            app:overlay_width="220dp" />
 
     </androidx.cardview.widget.CardView>
 
@@ -41,21 +40,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
-        android:textSize="20sp"
+        android:padding="20dp"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/scratchedImg"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        app:elevation="20dp"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
         android:scaleType="centerCrop"
-        app:shapeAppearanceOverlay="@style/SlightlyRoundedSquare"
+        app:elevation="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/SlightlyRoundedSquare" />
+
+    <TextView
+        android:id="@+id/directorNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="18sp"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -139,7 +139,7 @@ public class ImageAdapter extends BaseAdapter {
             "Titanic",
             "Troy",
             "Slumdog Millionaire",
-            "Pirates Of The Carribean",
+            "Pirates Of The Caribbean 1",
             "Troy",
             "Troy",
             "Troy",
