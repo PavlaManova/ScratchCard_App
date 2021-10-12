@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +29,7 @@ public class SingleItemDialog extends AppCompatDialogFragment {
     private TextView directorName;
     private ScratchView scratchView;
     private String selectedName;
+    private Button undoBtn;
     private int selectedImage;
     private int position;
     private Intent intent;
@@ -152,23 +154,45 @@ public class SingleItemDialog extends AppCompatDialogFragment {
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
+        //AlertDialog dialog=builder.show();
 
         LayoutInflater inflater=getActivity().getLayoutInflater();
         View view=inflater.inflate(R.layout.single_item_dialog, null);
+        //undoBtn=dialog.getButton(AlertDialog.BUTTON_NEUTRAL);
 
         loadViewsById(view);
         getItemExtras();
         loadDataAccordingScratched();
         configureScratchFeature();
+        buildDialog(builder, view);
 
+        return builder.create();
+    }
+
+    private void buildDialog(AlertDialog.Builder builder, View view) {
         builder.setView(view)
                 .setPositiveButton("Done", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                     }
-                });
+                })
+                .setNeutralButton("Undo", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //undoBtn.setVisibility(View.INVISIBLE);
+                        isScratched=false;
+                        PrefConfig.saveScratchedImgInPref(getContext(),isScratched,position);
+                        makeItemUnscratched();
 
-        return builder.create();
+                    }
+                });
+    }
+
+    private void makeItemUnscratched() {
+        cardView.setVisibility(View.VISIBLE);
+        scratchedImg.setVisibility(View.INVISIBLE);
+        movieName.setTextColor(getResources().getColor(R.color.greyTitle));
+        directorName.setTextColor(getResources().getColor(R.color.greyTitle));
     }
 
     private void loadViewsById(View view) {
@@ -202,12 +226,8 @@ public class SingleItemDialog extends AppCompatDialogFragment {
             movieName.setTextColor(getResources().getColor(R.color.titleColor));
             directorName.setTextColor(getResources().getColor(R.color.titleColor));
         }
-        else{
-            cardView.setVisibility(View.VISIBLE);
-            scratchedImg.setVisibility(View.INVISIBLE);
-            movieName.setTextColor(getResources().getColor(R.color.greyTitle));
-            directorName.setTextColor(getResources().getColor(R.color.greyTitle));
-        }
+        else
+            makeItemUnscratched();
     }
 
     private void configureScratchFeature() {

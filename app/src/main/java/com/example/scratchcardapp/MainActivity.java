@@ -48,9 +48,6 @@ public class MainActivity extends AppCompatActivity implements GenderDialog.Gend
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectedName=imgAdapter.getItemName(position);
                 selectedImage=imgAdapter.getItemImage(position);
-               /* startActivity(new Intent(MainActivity.this, ClickedItemActivity.class)
-                        .putExtra("name",selectedName).putExtra("image",selectedImage)
-                        .putExtra("position",position));*/
                openSingleItemDialog(new Intent(new Intent(MainActivity.this, SingleItemDialog.class)
                        .putExtra("name",selectedName).putExtra("image",selectedImage)
                        .putExtra("position",position)));
