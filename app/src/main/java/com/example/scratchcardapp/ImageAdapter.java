@@ -27,7 +27,7 @@ public class ImageAdapter extends BaseAdapter {
             R.drawable.troy,
             R.drawable.slumdog_millionaire,
             R.drawable.pirates_of_the_caribbean,
-            R.drawable.troy,
+            R.drawable.hidden_figures_min,
             R.drawable.troy,
             R.drawable.troy,
             //11
@@ -140,7 +140,7 @@ public class ImageAdapter extends BaseAdapter {
             "Troy",
             "Slumdog Millionaire",
             "Pirates Of The Caribbean 1",
-            "Troy",
+            "Hidden Figures",
             "Troy",
             "Troy",
             //11

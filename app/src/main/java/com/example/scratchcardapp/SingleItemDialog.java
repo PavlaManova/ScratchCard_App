@@ -46,7 +46,7 @@ public class SingleItemDialog extends AppCompatDialogFragment {
         "Wolfgang Petersen",
         "Danny Boyle",
         "Gore Verbinski",
-            "Wolfgang Petersen",
+            "Theodore Melfi",
             "Wolfgang Petersen",
             "Wolfgang Petersen",
             //11
